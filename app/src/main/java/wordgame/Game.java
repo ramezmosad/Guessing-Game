@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import wordgame.model.SecretWord;
 import wordgame.model.Dictionary;
-
+import wordgame.controller.GameController;
 import wordgame.view.WordGameGUI;
 
 public class Game
@@ -23,7 +23,7 @@ public class Game
    public static void main(String []args)
    {
       // Pick a secret word (create the model)
-      SecretWord secretWord = null;
+      SecretWord secretWord;
       try
       {
          secretWord = new SecretWord(pickWord("dictionary.txt"));
@@ -34,9 +34,9 @@ public class Game
          return;
       }
 
-      // TODO: For MVC pattern, instantiate a controller, and pass secretWord to the controller
+      // For MVC pattern, instantiate a controller, and pass secretWord to the controller
       // Let the controller instantiate WordGameGUI, instead of the main method
-      WordGameGUI gui = new WordGameGUI();
+      GameController controller = new GameController(secretWord);
       
    }
 
